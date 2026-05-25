@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green: #00ff41;
+  --green-dim: #00aa2b;
+  --red: #ff0000;
+  --red-dim: #cc0000;
+  --amber: #ffaa00;
+  --bg: #030303;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--green);
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* CRT Screen Effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* CRT Vignette */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.85) 100%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ff41;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00aa2b;
+}
+
+/* Text selection */
+::selection {
+  background: #00ff41;
+  color: #000;
+}
+
+/* Glitch text effect */
+.glitch-text {
+  position: relative;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.glitch-text::before {
+  color: #ff0000;
+  animation: glitch 2s infinite;
+  clip-path: inset(0 0 0 0);
+}
+.glitch-text::after {
+  color: #00ffff;
+  animation: glitch2 2s infinite;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Terminal cursor */
+.cursor::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  color: var(--green);
+}
+
+/* Green glow */
+.glow-green {
+  text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+}
+.glow-red {
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+}
+.glow-amber {
+  text-shadow: 0 0 10px #ffaa00, 0 0 20px #ffaa00;
+}
+
+/* Box glows */
+.box-glow-green {
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3), inset 0 0 10px rgba(0, 255, 65, 0.05);
+}
+.box-glow-red {
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4), inset 0 0 10px rgba(255, 0, 0, 0.1);
+}
+.box-glow-amber {
+  box-shadow: 0 0 10px rgba(255, 170, 0, 0.3), inset 0 0 10px rgba(255, 170, 0, 0.05);
+}
+
+/* Terminal panel */
+.terminal-panel {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  position: relative;
+  overflow: hidden;
+}
+.terminal-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ff41, transparent);
+  opacity: 0.5;
+}
+
+/* Noise overlay */
+.noise-overlay {
+  position: relative;
+}
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+@keyframes glitch {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  10% { clip-path: inset(30% 0 60% 0); transform: translate(-3px, 2px); }
+  20% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  30% { clip-path: inset(70% 0 10% 0); transform: translate(3px, -2px); }
+  40% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  80% { clip-path: inset(50% 0 30% 0); transform: translate(2px, 1px); }
+  85% { clip-path: inset(0 0 0 0); transform: translate(0); }
+}
+
+@keyframes glitch2 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  10% { clip-path: inset(60% 0 20% 0); transform: translate(3px, -2px); }
+  20% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  30% { clip-path: inset(10% 0 80% 0); transform: translate(-3px, 2px); }
+  40% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  80% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, -1px); }
+  85% { clip-path: inset(0 0 0 0); transform: translate(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}

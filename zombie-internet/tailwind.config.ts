@@ -1,0 +1,133 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        "zomb-black": "#030303",
+        "zomb-dark": "#0a0a0a",
+        "zomb-gray": "#111111",
+        "zomb-border": "#1a1a1a",
+        "zomb-green": "#00ff41",
+        "zomb-green-dim": "#00aa2b",
+        "zomb-green-dark": "#004d15",
+        "zomb-red": "#ff0000",
+        "zomb-red-dim": "#cc0000",
+        "zomb-red-dark": "#330000",
+        "zomb-amber": "#ffaa00",
+        "zomb-amber-dim": "#cc8800",
+        "zomb-blue": "#0044ff",
+        "zomb-cyan": "#00ffff",
+        "zomb-white": "#e0e0e0",
+      },
+      fontFamily: {
+        mono: ["'Share Tech Mono'", "'Courier New'", "monospace"],
+        terminal: ["'VT323'", "'Courier New'", "monospace"],
+        display: ["'Bebas Neue'", "monospace"],
+      },
+      animation: {
+        "flicker": "flicker 0.15s infinite",
+        "scan": "scan 8s linear infinite",
+        "glitch": "glitch 2s infinite",
+        "glitch-2": "glitch2 2s infinite",
+        "blink": "blink 1s step-end infinite",
+        "pulse-red": "pulseRed 2s ease-in-out infinite",
+        "pulse-green": "pulseGreen 3s ease-in-out infinite",
+        "scroll-up": "scrollUp 20s linear infinite",
+        "noise": "noise 0.3s infinite",
+        "typewriter": "typewriter 3s steps(40) forwards",
+        "static": "static 0.1s infinite",
+        "shake": "shake 0.5s infinite",
+      },
+      keyframes: {
+        flicker: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.85" },
+        },
+        scan: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100vh)" },
+        },
+        glitch: {
+          "0%, 100%": { clipPath: "inset(0 0 0 0)", transform: "translate(0)" },
+          "10%": { clipPath: "inset(30% 0 60% 0)", transform: "translate(-3px, 2px)" },
+          "20%": { clipPath: "inset(0 0 0 0)", transform: "translate(0)" },
+          "30%": { clipPath: "inset(70% 0 10% 0)", transform: "translate(3px, -2px)" },
+          "40%": { clipPath: "inset(0 0 0 0)", transform: "translate(0)" },
+          "80%": { clipPath: "inset(50% 0 30% 0)", transform: "translate(2px, 1px)" },
+          "85%": { clipPath: "inset(0 0 0 0)", transform: "translate(0)" },
+        },
+        glitch2: {
+          "0%, 100%": { clipPath: "inset(0 0 0 0)", transform: "translate(0)" },
+          "10%": { clipPath: "inset(60% 0 20% 0)", transform: "translate(3px, -2px)" },
+          "20%": { clipPath: "inset(0 0 0 0)", transform: "translate(0)" },
+          "30%": { clipPath: "inset(10% 0 80% 0)", transform: "translate(-3px, 2px)" },
+          "40%": { clipPath: "inset(0 0 0 0)", transform: "translate(0)" },
+          "80%": { clipPath: "inset(20% 0 60% 0)", transform: "translate(-2px, -1px)" },
+          "85%": { clipPath: "inset(0 0 0 0)", transform: "translate(0)" },
+        },
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
+        pulseRed: {
+          "0%, 100%": { boxShadow: "0 0 5px #ff0000, 0 0 10px #ff0000" },
+          "50%": { boxShadow: "0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000" },
+        },
+        pulseGreen: {
+          "0%, 100%": { boxShadow: "0 0 5px #00ff41" },
+          "50%": { boxShadow: "0 0 20px #00ff41, 0 0 40px #00ff41" },
+        },
+        scrollUp: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-50%)" },
+        },
+        noise: {
+          "0%, 100%": { backgroundPosition: "0 0" },
+          "10%": { backgroundPosition: "-5% -10%" },
+          "20%": { backgroundPosition: "-15% 5%" },
+          "30%": { backgroundPosition: "7% -25%" },
+          "40%": { backgroundPosition: "20% 25%" },
+          "50%": { backgroundPosition: "-25% 10%" },
+          "60%": { backgroundPosition: "15% 5%" },
+          "70%": { backgroundPosition: "0% 15%" },
+          "80%": { backgroundPosition: "25% 35%" },
+          "90%": { backgroundPosition: "-10% 10%" },
+        },
+        typewriter: {
+          from: { width: "0" },
+          to: { width: "100%" },
+        },
+        static: {
+          "0%": { opacity: "0.05" },
+          "10%": { opacity: "0.1" },
+          "20%": { opacity: "0.05" },
+          "30%": { opacity: "0.15" },
+          "40%": { opacity: "0.05" },
+          "50%": { opacity: "0.1" },
+          "60%": { opacity: "0.07" },
+          "70%": { opacity: "0.05" },
+          "80%": { opacity: "0.12" },
+          "90%": { opacity: "0.05" },
+          "100%": { opacity: "0.08" },
+        },
+        shake: {
+          "0%, 100%": { transform: "translateX(0)" },
+          "25%": { transform: "translateX(-2px)" },
+          "75%": { transform: "translateX(2px)" },
+        },
+      },
+      backgroundImage: {
+        "scanlines": "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px)",
+        "crt-vignette": "radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.8) 100%)",
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
